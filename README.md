@@ -41,3 +41,15 @@
 - './config/development.js'는 local 환경에서 개발할 때 사용
 - '/config.productuon.js'는 실제 배포 환경에서 사용
   -- HEROKU에서 가져옴
+
+# 비밀번호 암호화
+
+- npm i bcrypt
+
+# 토큰 만들기
+
+- npm i jsonwebtoken
+
+# 생성한 토큰을 쿠키에 저장
+
+- npm i cookie-parser
