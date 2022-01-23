@@ -58,7 +58,7 @@ userSchema.methods.comparePassword = function (plainPassword, cb) {
   // planPassword: 1234567  암호화된 비밀번호: $2b$10$NGk/FK8xQKxviKjTIAwIAOB1jix9pFeMr0/VqrnosFlIyYKvtR8le
   bcrypt.compare(plainPassword, this.password, function (err, isMatch) {
     if (err) return cb(err);
-    return cb(null, isMatch);
+    cb(null, isMatch);
   });
 };
 

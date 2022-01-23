@@ -1,7 +1,7 @@
 # express install
 
 - 'package.json'의 'script' 항목에 "start": node start" 추가
-  = 'npm run start' 실행 시 node 실행
+  - 'npm run start' 실행 시 node 실행
 
 # mongoose install
 
@@ -53,3 +53,32 @@
 # 생성한 토큰을 쿠키에 저장
 
 - npm i cookie-parser
+
+# 라우터 기능
+
+- ㅉreact-router-dom
+
+# axios 설치
+
+- npm i axios
+
+# 프론트, 백엔드 동시 실행
+
+- npm iconcurrently
+
+# 프론트엔드 css 프레임워크 antd 설치
+
+- npm i antd
+
+# 리덕스
+
+- 리덕스 스토어를 통해 컴포넌트의 state값을 공유하여 상위의 상위 컴포넌트에서도 state 값을 사용할 수 있도록 도와준다.
+- 리덕스 실행 순서는 React Component, Dispatch(action), action, reducer, stort, subscribe 순서이다
+- npm i redux react-redux redux-promise redux-thunk
+- 일반적으로 리덕스는 object의 action을 사용하지만 Promise, Function 또한 사용한다.
+  - 따라서 더 나은 사용을 위하여 dispatch에 function을 받는 방법을 알려주는 redux-thunk와 dispatch에 Promise를 받는 방법을 알려주는 redux-promise를 사용한다.
+
+# 리듀서
+
+- 리듀서는 각자의
+- 리듀서는 state 변화한 값만 리턴하며 각자마다 우유

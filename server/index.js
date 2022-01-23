@@ -24,6 +24,10 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.get("/api/hello", (req, res) => {
+  res.send("axios test");
+});
+
 app.post("/api/user/register", (req, res) => {
   // 회원가입할 때 필요한 정보들을 client에서 가져오면 그것들을 데이터 베이스에 넣어준다.
   // bodyParser 기능을 통해 request body를 받아줌.
@@ -56,17 +60,17 @@ app.post("/api/user/login", (req, res) => {
           message: "비밀번호가 틀렸습니다.",
         });
       }
-    });
 
-    // 비밀번호가 맞다면 토큰을 생성
-    user.generateToken((err, user) => {
-      if (err) return res.status(400).send(err);
+      // 비밀번호가 맞다면 토큰을 생성
+      user.generateToken((err, user) => {
+        if (err) return res.status(400).send(err);
 
-      // 토큰을 쿠키 혹은 로컬스토리지에 저장한다.
-      res
-        .cookie("x_auth", user.token)
-        .status(200)
-        .json({ loginSuccess: true, userId: user._id });
+        // 토큰을 쿠키 혹은 로컬스토리지에 저장한다.
+        res
+          .cookie("x_auth", user.token)
+          .status(200)
+          .json({ loginSuccess: true, userId: user._id });
+      });
     });
   });
 });
