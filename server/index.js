@@ -20,7 +20,6 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
-  console.log("test");
   res.send("Hello World!");
 });
 

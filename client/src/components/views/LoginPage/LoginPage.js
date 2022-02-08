@@ -5,7 +5,7 @@ import { loginUser } from "../../../_action/user_action";
 
 function LoginPage(props) {
   const dispatch = useDispatch();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +27,6 @@ function LoginPage(props) {
     };
 
     dispatch(loginUser(body)).then((response) => {
-      // console.log(response);
       if (response.payload.loginSuccess) {
         navigate("/");
       } else {
