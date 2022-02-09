@@ -45,7 +45,6 @@ function RegisterPage(props) {
 
     console.log("dispatch start");
     dispatch(registerUser(body)).then((response) => {
-      console.log(props);
       if (response.payload.success) {
         navigate("/login");
       } else {
