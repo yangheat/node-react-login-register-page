@@ -1,4 +1,4 @@
-import { LOGIN_USER, REGISTER_USER } from "../_action/types";
+import { LOGIN_USER, REGISTER_USER, AUTH_USER } from "../_action/types";
 
 // 전 state와 현재 state를 다음 state로 만든다.
 export default function (state = {}, action) {
@@ -7,6 +7,8 @@ export default function (state = {}, action) {
       return { ...state, loginSuccess: action.payload };
     case REGISTER_USER:
       return { ...state, register: action.payload };
+    case AUTH_USER:
+      return { ...state, userData: action.payload };
     default:
       return state;
   }
