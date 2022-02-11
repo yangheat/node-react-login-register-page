@@ -1,56 +1,74 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../_action/user_action";
+
+import { Form, Input, Button, Checkbox, message, Row } from "antd";
 
 function LoginPage(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const onEmailHandler = (event) => {
-    setEmail(event.currentTarget.value);
-  };
-
-  const onPasswordHandler = (event) => {
-    setPassword(event.currentTarget.value);
-  };
-
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
-
+  const onFinish = (value) => {
     const body = {
-      email: email,
-      password: password,
+      email: value.email,
+      password: value.password,
     };
 
     dispatch(loginUser(body)).then((response) => {
       if (response.payload.loginSuccess) {
         navigate("/");
       } else {
-        alert("Error");
+        message.error("Check out your Account or Password again");
       }
     });
   };
 
   return (
-    <div>
-      <form
-        style={{ display: "flex", flexDirection: "column" }}
-        onSubmit={onSubmitHandler}
+    <Row
+      type="flex"
+      justify="center"
+      align="middle"
+      style={{ minHeight: "100vh" }}
+    >
+      <Form
+        name="basic"
+        labelCol={{ span: 8 }}
+        initialValues={{ remember: true }}
+        autoComplete="off"
+        onFinish={onFinish}
       >
-        <label>Email</label>
-        <input type="email" value={email} onChange={onEmailHandler} />
+        <Form.Item
+          label="Email"
+          name="email"
+          rules={[{ required: true, message: "Please input your email!" }]}
+        >
+          <Input />
+        </Form.Item>
 
-        <label>Password</label>
-        <input type="password" value={password} onChange={onPasswordHandler} />
-        <br />
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: "Please input your password!" }]}
+        >
+          <Input.Password />
+        </Form.Item>
 
-        <button>Login</button>
-      </form>
-    </div>
+        <Form.Item
+          name="remember"
+          valuePropName="checked"
+          wrapperCol={{ offset: 8, span: 16 }}
+        >
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </Row>
   );
 }
 
