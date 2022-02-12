@@ -3,7 +3,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../_action/user_action";
 
-import { Form, Input, Button, Checkbox, message, Row } from "antd";
+import { Form, Input, Button, message, Row } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+
+import "./LoginPage.css";
 
 function LoginPage(props) {
   const dispatch = useDispatch();
@@ -32,40 +35,42 @@ function LoginPage(props) {
       style={{ minHeight: "100vh" }}
     >
       <Form
-        name="basic"
-        labelCol={{ span: 8 }}
+        name="login-form"
+        className="login-form"
         initialValues={{ remember: true }}
-        autoComplete="off"
         onFinish={onFinish}
       >
         <Form.Item
-          label="Email"
           name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+          rules={[{ required: true, message: "Please input your Email!" }]}
         >
-          <Input />
+          <Input
+            prefix={<UserOutlined className="login-form-email-icon" />}
+            placeholder="Email"
+          />
         </Form.Item>
 
         <Form.Item
-          label="Password"
           name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[{ required: true, message: "Please input your Password!" }]}
         >
-          <Input.Password />
+          <Input.Password
+            prefix={<LockOutlined className="login-form-password-icon" />}
+            placeholder="Password"
+          />
         </Form.Item>
 
-        <Form.Item
-          name="remember"
-          valuePropName="checked"
-          wrapperCol={{ offset: 8, span: 16 }}
-        >
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+          >
+            Log in
           </Button>
+          <a href="./register" className="login-form-register-page">
+            register now!
+          </a>
         </Form.Item>
       </Form>
     </Row>
